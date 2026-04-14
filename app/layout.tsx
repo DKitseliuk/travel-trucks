@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import 'modern-normalize/modern-normalize.css';
 import './globals.css';
+import Header from '@/components/Header/Header';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -22,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
+        <Header />
         <main>{children}</main>
       </body>
     </html>
