@@ -8,10 +8,6 @@
   gap: 64px;
 }
 
-.aside {
-  width: 360px;
-}
-
 .content {
   flex-grow: 1;
   display: flex;

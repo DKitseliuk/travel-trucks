@@ -3,10 +3,10 @@
 import styles from './page.module.css';
 import ActionButton from '@/components/ActionButton/ActionButton';
 import CampersList from '@/components/CampersList/CampersList';
-import { DEFAULT_CATALOG_PAGINATION } from '@/constants/pagination';
-import { getAllCampers } from '@/lib/api/clientApi';
+import FilterPanel from '@/components/FilterPanel/FilterPanel';
+import { getAllCampers, getFilters } from '@/lib/api/clientApi';
 import { GetAllCampersParams } from '@/types/camper';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 
 type CatalogClientProps = {
@@ -17,7 +17,11 @@ const CatalogClient = ({ initialSearchParams }: CatalogClientProps) => {
   const [params, setParams] =
     useState<GetAllCampersParams>(initialSearchParams);
 
-  const perPage = DEFAULT_CATALOG_PAGINATION.limit;
+  const { data: filters } = useQuery({
+    queryKey: ['filters'],
+    queryFn: getFilters,
+    refetchOnMount: false,
+  });
 
   const {
     isLoading,
@@ -31,23 +35,26 @@ const CatalogClient = ({ initialSearchParams }: CatalogClientProps) => {
     queryFn: ({ pageParam = 1 }) =>
       getAllCampers({ ...params, page: pageParam }),
     initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) => {
-      const loaded = allPages.length * perPage;
-      return loaded < lastPage.total ? allPages.length + 1 : undefined;
+    getNextPageParam: (lastPage) => {
+      return lastPage.page < lastPage.totalPages
+        ? lastPage.page + 1
+        : undefined;
     },
   });
 
-  const campers = data?.pages.flatMap((elem) => elem.items) ?? [];
+  const campers = data?.pages.flatMap((elem) => elem.campers) ?? [];
 
   return (
     <section className={styles.section}>
       <div className={`${styles.wrapper} container`}>
-        <aside className={styles.aside}>Filter panel</aside>
+        <FilterPanel filters={filters} updateParams={setParams} />
         <div className={styles.content}>
           {isError ? (
             <>Something went wrong. Please try again</>
           ) : isLoading ? (
             <>Loading...</>
+          ) : campers.length === 0 ? (
+            <>Data not found. Please try another filters</>
           ) : (
             <>
               <CampersList campers={campers} />

@@ -1,6 +1,5 @@
 .card {
   width: 100%;
-  flex-grow: 1;
   background-color: var(--color-bg-secondary);
   border-radius: 16px;
   padding: 24px;

@@ -8,6 +8,7 @@ import { BsFuelPump } from 'react-icons/bs';
 import { BsDiagram3 } from 'react-icons/bs';
 import { IoMdCar } from 'react-icons/io';
 import { capitalize } from '@/helpers/capitalize';
+import { normalizeLocation } from '@/helpers/normalizeLocation';
 
 type CamperCardProps = {
   readonly camper: Camper;
@@ -18,10 +19,11 @@ const CamperCard = ({ camper }: CamperCardProps) => {
     <li className={styles.card}>
       <div className={styles.image}>
         <Image
-          src={camper.gallery[0].original}
+          src={camper?.coverImage || '/img/default_camper.webp'}
           alt={camper.name}
           fill
           sizes="(min-width: 1440px) 220px, 220px"
+          loading="eager"
         />
       </div>
       <div className={styles.content}>
@@ -39,7 +41,7 @@ const CamperCard = ({ camper }: CamperCardProps) => {
               />
               <span
                 className={styles.reviewLabel}
-              >{`${camper.rating}(${camper.reviews.length} Reviews)`}</span>
+              >{`${camper.rating}(${camper.totalReviews} Reviews)`}</span>
             </div>
             <div className={styles.location}>
               <BsMap
@@ -47,7 +49,9 @@ const CamperCard = ({ camper }: CamperCardProps) => {
                 stroke="var(--color-text-primary)"
                 size={16}
               />
-              <span className={styles.locationLabel}>{camper.location}</span>
+              <span className={styles.locationLabel}>
+                {normalizeLocation(camper.location)}
+              </span>
             </div>
           </div>
         </div>

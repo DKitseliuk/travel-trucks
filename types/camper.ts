@@ -1,5 +1,4 @@
 import { GalleryImage } from './gallery-image';
-import { Review } from './review';
 
 type Camper = {
   id: string;
@@ -16,31 +15,29 @@ type Camper = {
   consumption: string;
   transmission: string;
   engine: string;
-  AC: boolean;
-  bathroom: boolean;
-  kitchen: boolean;
-  TV: boolean;
-  radio: boolean;
-  refrigerator: boolean;
-  microwave: boolean;
-  gas: boolean;
-  water: boolean;
-  gallery: GalleryImage[];
-  reviews: Review[];
+  amenities: string[];
+  createdAt: Date;
+  updatedAt: Date;
+  coverImage?: string;
+  gallery?: GalleryImage[];
+  totalReviews: number;
 };
 
 type GetAllCampersParams = {
   page?: number;
-  limit?: number;
-  form?: string;
-  engine?: string;
-  transmission?: string;
+  perPage?: number;
   location?: string;
+  form?: string;
+  transmission?: string;
+  engine?: string;
 };
 
 type GetAllCampersResponse = {
+  page: number;
+  perPage: number;
   total: number;
-  items: Camper[];
+  totalPages: number;
+  campers: Camper[];
 };
 
 export type { Camper, GetAllCampersParams, GetAllCampersResponse };
