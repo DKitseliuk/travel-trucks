@@ -1,0 +1,29 @@
+.button {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 200px;
+  padding: 16px 32px;
+  margin: 0 auto;
+  height: 56px;
+  min-width: 144px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition:
+    border-color 0.15s ease-in-out,
+    opacity 0.15s ease-in-out;
+}
+
+@media screen and (min-width: 1440px) {
+  .button:hover,
+  .button:focus {
+    border-color: var(--color-btn-secondary);
+  }
+
+  .button:disabled {
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,21 @@
+.section {
+  padding: 48px 0;
+}
+
+.wrapper {
+  flex-grow: 1;
+  display: flex;
+  gap: 64px;
+}
+
+.aside {
+  width: 360px;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
