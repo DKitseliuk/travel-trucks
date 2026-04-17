@@ -34,21 +34,13 @@ const CamperCard = ({ camper }: CamperCardProps) => {
           </div>
           <div className={styles.meta}>
             <div className={styles.reviews}>
-              <FaStar
-                fill="var(--color-accent)"
-                stroke="var(--color-accent)"
-                size={16}
-              />
+              <FaStar fill="var(--color-accent)" size={16} />
               <span
                 className={styles.reviewLabel}
               >{`${camper.rating}(${camper.totalReviews} Reviews)`}</span>
             </div>
             <div className={styles.location}>
-              <BsMap
-                fill="var(--color-text-primary)"
-                stroke="var(--color-text-primary)"
-                size={16}
-              />
+              <BsMap fill="var(--color-text-primary)" size={16} />
               <span className={styles.locationLabel}>
                 {normalizeLocation(camper.location)}
               </span>
@@ -60,29 +52,17 @@ const CamperCard = ({ camper }: CamperCardProps) => {
         </p>
         <ul className={styles.infoList}>
           <li className={styles.infoItem}>
-            <BsFuelPump
-              fill="var(--color-text-primary)"
-              stroke="var(--color-text-primary)"
-              size={20}
-            />
+            <BsFuelPump fill="var(--color-text-primary)" size={20} />
             <span className={styles.label}>{capitalize(camper.engine)}</span>
           </li>
           <li className={styles.infoItem}>
-            <BsDiagram3
-              fill="var(--color-text-primary)"
-              stroke="var(--color-text-primary)"
-              size={20}
-            />
+            <BsDiagram3 fill="var(--color-text-primary)" size={20} />
             <span className={styles.label}>
               {capitalize(camper.transmission)}
             </span>
           </li>
           <li className={styles.infoItem}>
-            <IoMdCar
-              fill="var(--color-text-primary)"
-              stroke="var(--color-text-primary)"
-              size={20}
-            />
+            <IoMdCar fill="var(--color-text-primary)" size={20} />
             <span className={styles.label}>{capitalize(camper.form)}</span>
           </li>
         </ul>

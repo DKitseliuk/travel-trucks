@@ -1,0 +1,35 @@
+.galleryWrapper {
+  width: 640px;
+}
+
+.mainImageSwiper {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.mainImageWrapper {
+  position: relative;
+  width: 640px;
+  height: 504px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.navImageSwiper {
+  width: 100%;
+}
+
+.navImageWrapper {
+  position: relative;
+  width: 136px;
+  height: 144px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border 0.2s ease-in-out;
+}
+
+@media screen and (min-width: 1440px) {
+  .navImageWrapper:hover {
+    border: 3px solid var(--color-text-primary);
+  }
+}

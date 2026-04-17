@@ -1,0 +1,26 @@
+.top {
+  padding: 64px 0 44px;
+}
+
+.details {
+  display: flex;
+  gap: 24px;
+}
+
+.bottom {
+  padding: 44px 0 64px;
+}
+
+.reviews {
+  display: flex;
+  gap: 24px 48px;
+  flex-wrap: wrap;
+}
+
+.reviewTitle {
+  width: 100%;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--color-text-primary);
+}
