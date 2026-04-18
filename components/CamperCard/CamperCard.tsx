@@ -1,4 +1,4 @@
-import Image from 'next/image';
+'use client';
 import styles from './CamperCard.module.css';
 import { Camper } from '@/types/camper';
 import LinkButton from '../LinkButton/LinkButton';
@@ -9,6 +9,7 @@ import { BsDiagram3 } from 'react-icons/bs';
 import { IoMdCar } from 'react-icons/io';
 import { capitalize } from '@/helpers/capitalize';
 import { normalizeLocation } from '@/helpers/normalizeLocation';
+import CamperImage from '../CamperImage/CamperImage';
 
 type CamperCardProps = {
   readonly camper: Camper;
@@ -18,12 +19,10 @@ const CamperCard = ({ camper }: CamperCardProps) => {
   return (
     <li className={styles.card}>
       <div className={styles.image}>
-        <Image
-          src={camper?.coverImage || '/img/default_camper.webp'}
+        <CamperImage
+          src={camper.coverImage}
           alt={camper.name}
-          fill
           sizes="(min-width: 1440px) 220px, 220px"
-          loading="eager"
         />
       </div>
       <div className={styles.content}>

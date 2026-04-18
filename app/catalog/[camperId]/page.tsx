@@ -5,9 +5,37 @@ import CamperGallery from '@/components/CamperGallery/CamperGallery';
 import CamperDetails from '@/components/CamperDetails/CamperDetails';
 import ReviewsList from '@/components/ReviewsList/ReviewsList';
 import BookingForm from '@/components/BookingForm/BookingForm';
+import { Metadata } from 'next';
 
 type CamperDetailsPageProps = {
   readonly params: Promise<{ camperId: string }>;
+};
+
+const SITE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
+
+export const generateMetadata = async ({
+  params,
+}: CamperDetailsPageProps): Promise<Metadata> => {
+  const { camperId } = await params;
+  const camper = await getCamper(camperId);
+
+  return {
+    title: `Camper: ${camper.name}`,
+    description: `${camper.description.slice(0, 27).trim()}...`,
+    openGraph: {
+      title: `Camper: ${camper.name}`,
+      description: `${camper.description.slice(0, 27).trim()}...`,
+      url: `${SITE_URL}/catalog/${camperId}`,
+      images: [
+        {
+          url: `${SITE_URL}/img/banner.webp`,
+          width: 1200,
+          height: 630,
+          alt: camper.name,
+        },
+      ],
+    },
+  };
 };
 
 const CamperDetailsPage = async ({ params }: CamperDetailsPageProps) => {

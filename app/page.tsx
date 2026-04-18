@@ -2,6 +2,8 @@ import styles from './page.module.css';
 import { Metadata } from 'next';
 import LinkButton from '@/components/LinkButton/LinkButton';
 
+const SITE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
+
 export const metadata: Metadata = {
   title: 'Travel trucks',
   description:
@@ -17,6 +19,20 @@ export const metadata: Metadata = {
     'camper vans',
     'outdoor travel',
   ],
+  openGraph: {
+    title: 'Catalog',
+    description:
+      'Simple and efficient application designed for search ideal camper',
+    url: `${SITE_URL}`,
+    images: [
+      {
+        url: `${SITE_URL}/img/banner.webp`,
+        width: 1200,
+        height: 630,
+        alt: 'Travel trucks',
+      },
+    ],
+  },
 };
 
 const Home = () => {

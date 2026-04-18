@@ -8,7 +8,7 @@ type LinkButtonProps = {
 
 const LinkButton = ({ href, children }: LinkButtonProps) => {
   return (
-    <Link href={href} className={styles.link}>
+    <Link href={href} className={styles.link} target="_blank">
       {children}
     </Link>
   );

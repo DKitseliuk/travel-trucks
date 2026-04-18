@@ -11,11 +11,7 @@ const HeaderClient = () => {
   return (
     <ul className={styles.list}>
       <li className={styles.item}>
-        <Link
-          href="/"
-          className={clsx(styles.link, pathname === '/' && styles.active)}
-          aria-label="Travel Trucks home page"
-        >
+        <Link href="/" aria-label="Travel Trucks home page">
           Home
         </Link>
       </li>

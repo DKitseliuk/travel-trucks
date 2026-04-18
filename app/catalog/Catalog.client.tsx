@@ -8,6 +8,7 @@ import { getAllCampers, getFilters } from '@/lib/api/clientApi';
 import { GetAllCampersParams } from '@/types/camper';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import Loader from '@/app/loading';
 
 type CatalogClientProps = {
   readonly initialSearchParams: GetAllCampersParams;
@@ -52,7 +53,7 @@ const CatalogClient = ({ initialSearchParams }: CatalogClientProps) => {
           {isError ? (
             <>Something went wrong. Please try again</>
           ) : isLoading ? (
-            <>Loading...</>
+            <Loader />
           ) : campers.length === 0 ? (
             <>Data not found. Please try another filters</>
           ) : (

@@ -30,6 +30,6 @@
 
 @media screen and (min-width: 1440px) {
   .navImageWrapper:hover {
-    border: 3px solid var(--color-text-primary);
+    border: 3px solid var(--color-text-active);
   }
 }
