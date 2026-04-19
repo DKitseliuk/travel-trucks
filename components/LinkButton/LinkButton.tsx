@@ -2,13 +2,14 @@ import styles from './LinkButton.module.css';
 import Link from 'next/link';
 
 type LinkButtonProps = {
-  href: string;
   children: React.ReactNode;
+  href: string;
+  target?: string;
 };
 
-const LinkButton = ({ href, children }: LinkButtonProps) => {
+const LinkButton = ({ href, children, target = '_self' }: LinkButtonProps) => {
   return (
-    <Link href={href} className={styles.link} target="_blank">
+    <Link href={href} className={styles.link} target={target}>
       {children}
     </Link>
   );

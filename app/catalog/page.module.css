@@ -15,3 +15,26 @@
   gap: 40px;
   align-items: center;
 }
+
+.emptyCard {
+  width: 100%;
+  background-color: var(--color-bg-secondary);
+  border-radius: 16px;
+  padding: 80px 24px;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--color-text-primary);
+}
+
+.emptyText {
+  color: var(--color-text-secondary);
+}

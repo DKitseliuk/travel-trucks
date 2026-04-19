@@ -55,7 +55,12 @@ const CatalogClient = ({ initialSearchParams }: CatalogClientProps) => {
           ) : isLoading ? (
             <Loader />
           ) : campers.length === 0 ? (
-            <>Data not found. Please try another filters</>
+            <div className={styles.emptyCard}>
+              <h3 className={styles.emptyTitle}>No campers found</h3>
+              <p className={styles.emptyText}>
+                Try adjusting your filters or search criteria.
+              </p>
+            </div>
           ) : (
             <>
               <CampersList campers={campers} />

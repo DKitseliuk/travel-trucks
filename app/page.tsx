@@ -2,12 +2,12 @@ import styles from './page.module.css';
 import { Metadata } from 'next';
 import LinkButton from '@/components/LinkButton/LinkButton';
 
-const SITE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 export const metadata: Metadata = {
-  title: 'Travel trucks',
+  title: 'Travel Trucks',
   description:
-    'Explore a wide range of travel trucks and campers for your next adventure. Find the perfect vehicle for comfortable and unforgettable road trips.',
+    'Explore a wide range of camper vans and travel trucks for your next adventure. Find the perfect vehicle for comfortable and unforgettable road trips.',
   keywords: [
     'travel trucks',
     'camper rental',
@@ -20,18 +20,26 @@ export const metadata: Metadata = {
     'outdoor travel',
   ],
   openGraph: {
-    title: 'Catalog',
+    title: 'Travel Trucks',
     description:
-      'Simple and efficient application designed for search ideal camper',
-    url: `${SITE_URL}`,
+      'Explore a wide range of camper vans and travel trucks for your next adventure. Find the perfect vehicle for comfortable and unforgettable road trips.',
+    type: 'website',
+    url: SITE_URL,
+    siteName: 'Travel Trucks',
     images: [
       {
         url: `${SITE_URL}/img/banner.webp`,
         width: 1200,
         height: 630,
-        alt: 'Travel trucks',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Travel Trucks',
+    description:
+      'Explore a wide range of camper vans and travel trucks for your next adventure. Find the perfect vehicle for comfortable and unforgettable road trips.',
+    images: [`${SITE_URL}/img/banner.webp`],
   },
 };
 

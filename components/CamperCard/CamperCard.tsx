@@ -65,7 +65,9 @@ const CamperCard = ({ camper }: CamperCardProps) => {
             <span className={styles.label}>{capitalize(camper.form)}</span>
           </li>
         </ul>
-        <LinkButton href={`/catalog/${camper.id}`}>Show more</LinkButton>
+        <LinkButton href={`/catalog/${camper.id}`} target="_blank">
+          Show more
+        </LinkButton>
       </div>
     </li>
   );

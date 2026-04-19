@@ -1,17 +1,17 @@
 import styles from './page.module.css';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getCamper, getCamperReviews } from '@/lib/api/clientApi';
 import CamperGallery from '@/components/CamperGallery/CamperGallery';
 import CamperDetails from '@/components/CamperDetails/CamperDetails';
 import ReviewsList from '@/components/ReviewsList/ReviewsList';
 import BookingForm from '@/components/BookingForm/BookingForm';
-import { Metadata } from 'next';
 
 type CamperDetailsPageProps = {
   readonly params: Promise<{ camperId: string }>;
 };
 
-const SITE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 export const generateMetadata = async ({
   params,
@@ -19,21 +19,47 @@ export const generateMetadata = async ({
   const { camperId } = await params;
   const camper = await getCamper(camperId);
 
+  if (!camper) {
+    return {
+      title: 'Camper not found | Travel Trucks',
+      description: 'The requested camper could not be found.',
+    };
+  }
+
+  const description =
+    camper.description.length > 140
+      ? camper.description
+          .slice(0, 140)
+          .split(' ')
+          .slice(0, -1)
+          .join(' ')
+          .replace(/[.,!?;:]+$/, '') + '...'
+      : camper.description;
+
+  const image = camper?.gallery?.[0]?.original ?? `${SITE_URL}/img/banner.webp`;
+
   return {
-    title: `Camper: ${camper.name}`,
-    description: `${camper.description.slice(0, 27).trim()}...`,
+    metadataBase: new URL(SITE_URL),
+    title: `${camper.name} | Travel Trucks`,
+    description,
     openGraph: {
-      title: `Camper: ${camper.name}`,
-      description: `${camper.description.slice(0, 27).trim()}...`,
+      title: `${camper.name} | Travel Trucks`,
+      description,
+      type: 'article',
       url: `${SITE_URL}/catalog/${camperId}`,
       images: [
         {
-          url: `${SITE_URL}/img/banner.webp`,
+          url: image,
           width: 1200,
           height: 630,
-          alt: camper.name,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${camper.name} | Travel Trucks`,
+      description,
+      images: [image],
     },
   };
 };
