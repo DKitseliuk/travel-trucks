@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚐 Travel Trucks
 
-## Getting Started
+## 📌 Description
 
-First, run the development server:
+Travel Trucks is a web application for browsing and renting camper vans and travel trucks.
+Users can explore a catalog of vehicles, filter results, and view detailed information about each camper for planning road trips and outdoor adventures.
+
+## 🌐 Live Demo
+
+🔗 [Live Demo](https://travel-trucks-six-gamma.vercel.app)
+
+## ✨ Main Features
+
+- 🚐 Camper catalog with dynamic listing
+- 🔍 Filtering and search (by form, engine, transmission and location)
+- 📄 Detailed camper pages with images, description, reviews and booking form
+- ⚡ Dynamic routing with Next.js App Router
+- 🖼️ SEO-friendly pages with Open Graph metadata
+- ❌ Custom 404 and error pages
+- 🔄 Loading and empty states for better UX
+
+## 🛠️ Tech Stack
+
+- Next.js (App Router)
+- TypeScript
+- TanStack Query
+- Swiper
+- CSS Modules
+- REST API integration (external campers API)
+- Vercel (deployment)
+
+## 🚀 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/DKitseliuk/travel-trucks.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd travel-trucks
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Environment Variables
 
-## Learn More
+Create a .env.local file:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_API_URL=https://campers-api.goit.study
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Build for Production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Build project:
 
-## Deploy on Vercel
+```bash
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run production:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run start
+```
+
+## 👤 Author
+
+Dmytro Kitseliuk
+
+GitHub: [@DKitseliuk](https://www.github.com/DKitseliuk)
+
+Project: [Travel Trucks Repository](https://github.com/DKitseliuk/travel-trucks)
